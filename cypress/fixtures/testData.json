@@ -1,0 +1,8 @@
+{
+  "firstName": "account",
+  "lastName": "name",
+  "phone": "1234567890",
+  "password": "Test12345",
+  "emailLowercase": "email1@yopmail.com",
+  "emailUppercase": "Email1@yopmail.com"
+}
