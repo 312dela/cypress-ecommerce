@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Cypress.Commands.add("loginAPI",()=> {
+
+//     cy.request("POST","https://rahulshettyacademy.com/api/ecom/auth/login",
+//     {"userEmail":"anshika@gmail.com","userPassword":"Iamking@000"}).
+//     then(function(response)
+//     {
+//         expect(response.status).to.eq(200)
+//        Cypress.env('token',response.body.token);
+//     })
+// })
+
+Cypress.Commands.add("loginAPI", () => {
+  cy.fixture('testData').then((credentials) => {
+    cy.request("POST", "https://rahulshettyacademy.com/api/ecom/auth/login", {
+      userEmail: credentials.loginFlow.lowercaseEmail,
+      userPassword: credentials.loginFlow.password
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      Cypress.env('token', response.body.token);
+    });
+  });
+});

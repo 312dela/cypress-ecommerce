@@ -1,11 +1,11 @@
 /// <reference types = "cypress"/>
 
 describe('Login Flow Validation', () => {
-    let user = {};
+    let input = {};
 
     before(() => {
         cy.fixture('testData').then((data) => {
-            user = data;
+            input = data.loginFlow;
         });
     });
 
@@ -14,8 +14,8 @@ describe('Login Flow Validation', () => {
     })
 
     it('Login using registered email - lowercase', () => {
-        cy.get('#userEmail').type(user.emailLowercase);  
-        cy.get('#userPassword').type(user.password);
+        cy.get('#userEmail').type(input.lowercaseEmail);  
+        cy.get('#userPassword').type(input.password);
         cy.get('#login').click();
 
         cy.contains('#toast-container', 'Login Successfully').should('exist');
@@ -23,8 +23,8 @@ describe('Login Flow Validation', () => {
 
     it('Login using registered email - uppercase', () => {
 
-        cy.get('#userEmail').type(user.emailUppercase);
-        cy.get('#userPassword').type(user.password);
+        cy.get('#userEmail').type(input.uppercaseEmail);
+        cy.get('#userPassword').type(input.password);
         cy.get('#login').click();
         
         cy.contains('#toast-container', 'Login Successfully').should('exist');

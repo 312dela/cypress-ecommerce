@@ -1,8 +1,20 @@
 {
-  "firstName": "account",
-  "lastName": "name",
-  "phone": "1234567890",
-  "password": "Test12345",
-  "emailLowercase": "email1@yopmail.com",
-  "emailUppercase": "Email1@yopmail.com"
+  "registrationFlow": {
+    "firstName": "account",
+    "lastName": "name",
+    "phone": "1234567890",
+    "password": "Testing12345"
+  },
+  "loginFlow": {
+    "lowercaseEmail": "email1@yopmail.com",
+    "uppercaseEmail": "Email1@yopmail.com",
+    "password": "Test12345"
+  },
+  "orderFlow": {
+    "product1": "ZARA COAT 3",
+    "product2": "IPHONE 13 PRO",
+    "respectiveEmail": "email1@yopmail.com",
+    "differentEmail": "email2@yopmail.com",
+    "location": "Indo"
+  }
 }
