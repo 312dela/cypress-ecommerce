@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const emailCounterPath = path.resolve(__dirname, '../fixtures/emailCounter.json');
+const emailCounterPath = path.resolve(__dirname, '../fixtures/email-counter.json');
 
 function getAndIncrementEmailCounter() {
   if (!fs.existsSync(emailCounterPath)) {

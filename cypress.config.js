@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 const { getAndIncrementEmailCounter } = require('./cypress/utils/getEmailCounter');
 
 function setupNodeEvents(on, config) {
@@ -19,6 +19,6 @@ module.exports = defineConfig({
     video: true,
     setupNodeEvents,
     reporter: 'cypress-mochawesome-reporter',
-    specPattern: 'cypress/e2e/*.cy.js'
+    specPattern: 'cypress/e2e/*.cy.js',
   },
 });
