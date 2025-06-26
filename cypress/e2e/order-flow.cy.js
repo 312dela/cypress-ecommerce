@@ -29,16 +29,10 @@ describe('Order Flow Validation', () => {
     DashboardPage.addProductToCart(input.product2);
     DashboardPage.goToCart();
 
-    let sum = 0
-    cy.get('.prodTotal')
-      .each(($el) => {
-        const eachPrice = Number($el.text().split(' ')[1].trim());
-        sum = sum + eachPrice;
-      })
-      .then(() => {
-        expect(sum).to.eq(input.totalPrice);
-      });
-  });  
+    CartPage.totalPrice().then((sum) => {
+      expect(sum).to.eq(input.totalPrice);
+    });
+  });
 
   it('Create order with same email as the respective account', () => {
     DashboardPage.addProductToCart(input.product1);
@@ -80,7 +74,7 @@ describe('Order Flow Validation', () => {
 
     ThanksPage.getOrderId().then((orderId) => {
       ThanksPage.goToMyOrders();
-      MyOrdersPage.clickViewOrder();
+      MyOrdersPage.clickViewOrder(orderId);
     });
 
     cy.contains(' Billing Address')
