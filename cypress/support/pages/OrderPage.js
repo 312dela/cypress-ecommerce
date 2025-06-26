@@ -12,10 +12,6 @@ class OrderPage {
   clickOrder() {
     cy.get('.action__submit').click();
   }
-
-  assertShippingInformation() {
-    cy.contains('#toast-container', 'Please Enter Full Shipping Information').should('exist');
-  }
 }
 
 export default new OrderPage();

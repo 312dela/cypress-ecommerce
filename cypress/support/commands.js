@@ -33,41 +33,27 @@
 //        Cypress.env('token',response.body.token);
 //     })
 // })
+import { loginUser } from './api/auth';
+import { createOrder } from './api/order';
 
 Cypress.Commands.add('loginAPI', () => {
   cy.fixture('test-data').then((input) => {
-    cy.request('POST', 'https://rahulshettyacademy.com/api/ecom/auth/login', {
-      userEmail: input.loginFlow.lowercaseEmail,
-      userPassword: input.loginFlow.password,
-    }).then((response) => {
+    loginUser(input.loginFlow.lowercaseEmail, input.loginFlow.password).then((response) => {
       Cypress.env('token', response.body.token);
     });
   });
 });
 
 Cypress.Commands.add('otherUserLoginAPI', () => {
-  cy.fixture('test-data').then((input) => {
-    cy.request('POST', 'https://rahulshettyacademy.com/api/ecom/auth/login', {
-      userEmail: input.orderFlow.otherUserEmail,
-      userPassword: input.orderFlow.otherUserPassword,
-    }).then((response) => cy.wrap(response.body.token));
+  return cy.fixture('test-data').then((input) => {
+    return loginUser(input.orderFlow.otherUserEmail, input.orderFlow.otherUserPassword).then(
+      (response) => {
+        return response.body.token;
+      }
+    );
   });
 });
 
-Cypress.Commands.add('createOrder', (otherUserToken) => {
-  return cy.request({
-    method: 'POST',
-    url: 'https://rahulshettyacademy.com/api/ecom/order/create-order',
-    headers: {
-      Authorization: otherUserToken,
-    },
-    body: {
-      orders: [
-        {
-          country: 'Indonesia',
-          productOrderedId: '67a8df56c0d3e6622a297ccd',
-        },
-      ],
-    },
-  });
+Cypress.Commands.add('createOrder', (token, productId) => {
+  return createOrder(token, productId);
 });

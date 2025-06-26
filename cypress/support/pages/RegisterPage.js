@@ -38,10 +38,6 @@ class RegisterPage {
   clickRegister() {
     cy.get('#login').click();
   }
-
-  assertSuccessRegister() {
-    cy.get('h1.headcolor').should('have.text', 'Account Created Successfully');
-  }
 }
 
 export default new RegisterPage();

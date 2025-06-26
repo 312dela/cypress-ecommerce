@@ -4,6 +4,7 @@ import CartPage from '../support/pages/CartPage';
 import OrderPage from '../support/pages/OrderPage';
 import ThanksPage from '../support/pages/ThanksPage';
 import MyOrdersPage from '../support/pages/MyOrdersPage';
+import { getOrderDetails } from '../support/api/order';
 
 describe('Order Flow Validation', () => {
   let input = {};
@@ -30,7 +31,7 @@ describe('Order Flow Validation', () => {
     DashboardPage.goToCart();
 
     CartPage.totalPrice().then((sum) => {
-      expect(sum).to.eq(input.totalPrice);
+      expect(sum).to.eq(input.expectedTotalPrice);
     });
   });
 
@@ -105,15 +106,9 @@ describe('Order Flow Validation', () => {
       cy.createOrder(otherUserToken).then((response) => {
         const orderId = response.body.orders[0];
 
-        cy.request({
-          method: 'GET',
-          url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details',
-          qs: { id: orderId },
-          headers: {
-            Authorization: Cypress.env('token'),
-          },
-          failOnStatusCode: false,
-        }).then((response) => {
+        const currentUserToken = Cypress.env('token');
+
+        getOrderDetails(orderId, currentUserToken, { failOnStatusCode: false }).then((response) => {
           expect(response.status).to.eq(403);
         });
       });
