@@ -23,7 +23,7 @@ describe('Registration Flow Validation', () => {
     cy.get('.btn1').click();
   });
 
-  it('Create account using lowercase - unregistered  email', () => {
+  it('Create account using lowercase - unregistered email', () => {
     RegisterPage.inputFirstName(input.firstName);
     RegisterPage.inputLastName(input.lastName);
     RegisterPage.inputEmail(emailLower);
@@ -37,7 +37,7 @@ describe('Registration Flow Validation', () => {
     cy.get('h1.headcolor').should('have.text', 'Account Created Successfully');
   });
 
-  it('Create account using lowercase - registered  email', () => {
+  it('Create account using lowercase - registered email', () => {
     RegisterPage.inputFirstName(input.firstName);
     RegisterPage.inputLastName(input.lastName);
     RegisterPage.inputEmail(emailLower);
@@ -51,7 +51,7 @@ describe('Registration Flow Validation', () => {
     cy.contains('#toast-container', 'already').should('exist');
   });
 
-  it('Create account using uppercase - registered  email', () => {
+  it('Create account using uppercase - registered email', () => {
     RegisterPage.inputFirstName(input.firstName);
     RegisterPage.inputLastName(input.lastName);
     RegisterPage.inputEmail(emailUpper);
