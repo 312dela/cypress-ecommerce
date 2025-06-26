@@ -100,7 +100,7 @@ describe('Order Flow Validation', () => {
     cy.contains('#toast-container', 'Please Enter Full Shipping Information').should('exist');
   });
 
-  it('View order created by different email from the respective account', () => {
+  it('View order created by different account from the respective account', () => {
     cy.otherUserLoginAPI().then((otherUserToken) => {
       cy.createOrder(otherUserToken).then((response) => {
         const orderId = response.body.orders[0];
