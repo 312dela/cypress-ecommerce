@@ -1,5 +1,5 @@
 /// <reference types = "cypress"/>
-//
+
 import LoginPage from '../support/pages/LoginPage';
 
 describe('Login Flow Validation', () => {
