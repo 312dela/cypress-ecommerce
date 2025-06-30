@@ -15,6 +15,13 @@ function setupNodeEvents(on, config) {
 }
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports/html',
+    overwrite: true,
+    html: true,
+    json: false
+  },
   e2e: {
     video: true,
     setupNodeEvents,
