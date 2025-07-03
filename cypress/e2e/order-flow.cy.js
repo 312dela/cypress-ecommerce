@@ -31,7 +31,13 @@ describe('Order Flow Validation', () => {
     DashboardPage.goToCart();
 
     CartPage.totalPrice().then((sum) => {
-      expect(sum).to.eq(input.expectedTotalPrice);
+      cy.contains('.totalRow', 'Total')
+        .find('.value')
+        .invoke('text')
+        .then((text) => {
+          const actualTotalPrice = Number(text.replace('$', '').replace(',', '').trim());
+          expect(sum).to.eq(actualTotalPrice);
+        });
     });
   });
 

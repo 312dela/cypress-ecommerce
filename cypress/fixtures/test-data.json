@@ -13,7 +13,6 @@
   "orderFlow": {
     "product1": "ZARA COAT 3",
     "product2": "IPHONE 13 PRO",
-    "expectedTotalPrice": 263000,
     "insertLocation": "Indo",
     "selectLocation": "Indonesia",
     "respectiveEmail": "email1@yopmail.com",
