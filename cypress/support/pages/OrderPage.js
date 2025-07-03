@@ -6,7 +6,7 @@ class OrderPage {
 
   inputCountryShippingInfo(loc, location) {
     cy.get('input[placeholder="Select Country"]').type(loc);
-    cy.contains('button span', location).click();
+    cy.contains('.ta-results button span', location).click();
   }
 
   clickOrder() {
