@@ -74,7 +74,7 @@ describe('Order Flow Validation', () => {
     CartPage.clickCheckout();
 
     OrderPage.changeEmailShippingInfo(input.otherUserEmail);
-    cy.get('label[type="text"]').should('include.text', input.otherUserEmail);
+    cy.get('.user__name label').should('include.text', input.otherUserEmail);
 
     OrderPage.inputCountryShippingInfo(input.insertLocation, input.selectLocation);
     OrderPage.clickOrder();
@@ -101,7 +101,7 @@ describe('Order Flow Validation', () => {
     CartPage.clickCheckout();
 
     OrderPage.changeEmailShippingInfo(input.otherUserEmail);
-    cy.get('label[type="text"]').should('include.text', input.otherUserEmail);
+    cy.get('.user__name label').should('include.text', input.otherUserEmail);
 
     OrderPage.clickOrder();
     cy.contains('#toast-container', 'Please Enter Full Shipping Information').should('exist');
